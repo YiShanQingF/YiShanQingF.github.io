@@ -293,6 +293,169 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/22/Linux_优化/" itemprop="url">
+                  Centos 基本优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-22T13:10:00+08:00" content="2016-08-22">
+              2016-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/Centos/" itemprop="url" rel="index">
+                    <span itemprop="name">Centos</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/22/Linux_优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/Linux_优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/22/Linux_优化/" class="leancloud_visitors" data-flag-title="Centos 基本优化">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Linux-&#x4F18;&#x5316;"><a href="#Linux-&#x4F18;&#x5316;" class="headerlink" title="Linux_&#x4F18;&#x5316;"></a>Linux_&#x4F18;&#x5316;</h1><h3 id="&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;"><a href="#&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;" class="headerlink" title="&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;"></a>&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line">uname -r</span><br><span class="line">uname -m</span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+<h3 id="&#x78C1;&#x76D8;&#x5206;&#x533A;"><a href="#&#x78C1;&#x76D8;&#x5206;&#x533A;" class="headerlink" title="&#x78C1;&#x76D8;&#x5206;&#x533A;"></a>&#x78C1;&#x76D8;&#x5206;&#x533A;</h3><blockquote>
+<ul>
+<li>&#x4E3B;&#x5206;&#x533A;&#xFF08;&#x4E00;&#x5757;&#x786C;&#x76D8;&#x6700;&#x591A;&#x6709;4&#x4E2A;&#x4E3B;&#x5206;&#x533A;&#xFF09;</li>
+<li>&#x6269;&#x5C55;&#x5206;&#x533A;&#xFF08;&#x6700;&#x591A;&#x4E00;&#x4E2A;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x6269;&#x5C55;&#x5206;&#x533A;&#x4E0A;&#x5212;&#x5206;&#x903B;&#x8F91;&#x5206;&#x533A;&#xFF09;</li>
+<li>&#x903B;&#x8F91;&#x5206;&#x533A;</li>
+</ul>
+</blockquote>
+<p><code>&#x683C;&#x5F0F;&#x5316;</code>&#x4E3B;&#x8981;&#x662F;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</p>
+<h3 id="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;"><a href="#&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;" class="headerlink" title="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;"></a>&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setup</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140329.jpg" alt=""><br><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140415.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntsysv</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140415.jpg" alt=""></p>
+<p>Linux&#x5FC5;&#x5F00;&#x7684;&#x670D;&#x52A1;</p>
+<blockquote>
+<ul>
+<li>crond        &#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</li>
+<li>network    &#x7F51;&#x7EDC;</li>
+<li>rsyslog    &#x7CFB;&#x7EDF;&#x65E5;&#x5FD7;</li>
+<li>sshd            ssh</li>
+</ul>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/22/Linux_优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/16/Linux_安装/" itemprop="url">
                   Centos6 安装教程
                 </a>
@@ -1009,7 +1172,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1026,7 +1189,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
