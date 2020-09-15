@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="oracle,tablespace," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x67E5;&amp;#x8BE2;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;&amp;#x4F7F;&amp;#x7528;&amp;#x60C5;&amp;#x51B5;123456--&amp;#x67E5;&amp;#x770B;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;select * from dba_tablespaces;--&amp;#x67E5;&amp;#x770B;&amp;#x5269;&amp;#x4F59;&amp;#x8868;&amp;#x7A7A;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="表空间各种查询">
+<meta property="og:url" content="http://zhufanjia.com/2016/09/28/表空间各种查询/index.html">
+<meta property="og:site_name" content="青山">
+<meta property="og:description" content="&amp;#x67E5;&amp;#x8BE2;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;&amp;#x4F7F;&amp;#x7528;&amp;#x60C5;&amp;#x51B5;123456--&amp;#x67E5;&amp;#x770B;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;select * from dba_tablespaces;--&amp;#x67E5;&amp;#x770B;&amp;#x5269;&amp;#x4F59;&amp;#x8868;&amp;#x7A7A;">
+<meta property="og:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/2016-09-27_181113.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/2016-09-27_202323.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/2016-09-27_203038.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/C:/Users\QS\Desktop\2016-09-27_203257.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/C:/Users\QS\Desktop\2016-09-27_203257.jpg">
+<meta property="og:updated_time" content="2020-09-15T05:06:15.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="表空间各种查询">
+<meta name="twitter:description" content="&amp;#x67E5;&amp;#x8BE2;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;&amp;#x4F7F;&amp;#x7528;&amp;#x60C5;&amp;#x51B5;123456--&amp;#x67E5;&amp;#x770B;&amp;#x8868;&amp;#x7A7A;&amp;#x95F4;select * from dba_tablespaces;--&amp;#x67E5;&amp;#x770B;&amp;#x5269;&amp;#x4F59;&amp;#x8868;&amp;#x7A7A;">
+<meta name="twitter:image" content="http://zhufanjia.com/2016/09/28/表空间各种查询/2016-09-27_181113.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 表空间各种查询 | 青山 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">青山</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">生命不息，折腾不止</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+
+      
+
+    </ul>
+  
+  
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'N9XW5kELRRqGU7EQ9qhU','2.0.0');
+</script>
+
+
+
+    </div>
+  
+  
+  
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+    _st('install','N9XW5kELRRqGU7EQ9qhU','2.0.0');
+  </script>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                表空间各种查询
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T10:39:55+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/28/表空间各种查询/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/表空间各种查询/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/28/表空间各种查询/" class="leancloud_visitors" data-flag-title="表空间各种查询">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="&#x67E5;&#x8BE2;&#x8868;&#x7A7A;&#x95F4;&#x4F7F;&#x7528;&#x60C5;&#x51B5;"><a href="#&#x67E5;&#x8BE2;&#x8868;&#x7A7A;&#x95F4;&#x4F7F;&#x7528;&#x60C5;&#x51B5;" class="headerlink" title="&#x67E5;&#x8BE2;&#x8868;&#x7A7A;&#x95F4;&#x4F7F;&#x7528;&#x60C5;&#x51B5;"></a>&#x67E5;&#x8BE2;&#x8868;&#x7A7A;&#x95F4;&#x4F7F;&#x7528;&#x60C5;&#x51B5;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--&#x67E5;&#x770B;&#x8868;&#x7A7A;&#x95F4;</span><br><span class="line">select * from dba_tablespaces;</span><br><span class="line">--&#x67E5;&#x770B;&#x5269;&#x4F59;&#x8868;&#x7A7A;&#x95F4;</span><br><span class="line">select * from dba_free_space;</span><br><span class="line">--&#x67E5;&#x770B;&#x6570;&#x636E;&#x6587;&#x4EF6;</span><br><span class="line">select * from dba_data_files;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SELECT Upper(F.TABLESPACE_NAME)         &quot;&#x8868;&#x7A7A;&#x95F4;&#x540D;&quot;,</span><br><span class="line">       D.TOT_GROOTTE_MB                 &quot;&#x8868;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;(M)&quot;,</span><br><span class="line">       D.TOT_GROOTTE_MB - F.TOTAL_BYTES &quot;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4;(M)&quot;,</span><br><span class="line">       To_char(Round(( D.TOT_GROOTTE_MB - F.TOTAL_BYTES ) / D.TOT_GROOTTE_MB * 100, 2), &apos;990.99&apos;)</span><br><span class="line">       || &apos;%&apos;                           &quot;&#x4F7F;&#x7528;&#x6BD4;&quot;,</span><br><span class="line">       F.TOTAL_BYTES                    &quot;&#x7A7A;&#x95F2;&#x7A7A;&#x95F4;(M)&quot;,</span><br><span class="line">       F.MAX_BYTES                      &quot;&#x6700;&#x5927;&#x5757;(M)&quot;</span><br><span class="line">FROM   (SELECT TABLESPACE_NAME,</span><br><span class="line">               Round(Sum(BYTES) / ( 1024 * 1024 ), 2) TOTAL_BYTES,</span><br><span class="line">               Round(Max(BYTES) / ( 1024 * 1024 ), 2) MAX_BYTES</span><br><span class="line">        FROM   SYS.DBA_FREE_SPACE</span><br><span class="line">        GROUP  BY TABLESPACE_NAME) F,</span><br><span class="line">       (SELECT DD.TABLESPACE_NAME,</span><br><span class="line">               Round(Sum(DD.BYTES) / ( 1024 * 1024 ), 2) TOT_GROOTTE_MB</span><br><span class="line">        FROM   SYS.DBA_DATA_FILES DD</span><br><span class="line">        GROUP  BY DD.TABLESPACE_NAME) D</span><br><span class="line">WHERE  D.TABLESPACE_NAME = F.TABLESPACE_NAME</span><br><span class="line">ORDER  BY 1;</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/09/28/&#x8868;&#x7A7A;&#x95F4;&#x5404;&#x79CD;&#x67E5;&#x8BE2;/2016-09-27_181113.jpg" alt=""></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT   a.tablespace_name,</span><br><span class="line">         ROUND (a.total_size) &quot;total_size(MB)&quot;,</span><br><span class="line">         ROUND (a.total_size) - ROUND (b.free_size, 3) &quot;used_size(MB)&quot;,</span><br><span class="line">         ROUND (b.free_size, 3) &quot;free_size(MB)&quot;,</span><br><span class="line">         ROUND (b.free_size / total_size * 100, 2) || &apos;%&apos; free_rate</span><br><span class="line">  FROM   (  SELECT   tablespace_name, SUM (bytes) / 1024 / 1024 total_size</span><br><span class="line">              FROM   dba_data_files</span><br><span class="line">          GROUP BY   tablespace_name) a,</span><br><span class="line">         (  SELECT   tablespace_name, SUM (bytes) / 1024 / 1024 free_size</span><br><span class="line">              FROM   dba_free_space</span><br><span class="line">          GROUP BY   tablespace_name) b</span><br><span class="line"> WHERE   a.tablespace_name = b.tablespace_name(+);</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/09/28/&#x8868;&#x7A7A;&#x95F4;&#x5404;&#x79CD;&#x67E5;&#x8BE2;/2016-09-27_202323.jpg" alt=""></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SELECT TABLESPACE_NAME                                                  AS &quot;&#x8868;&#x7A7A;&#x95F4;&quot;,</span><br><span class="line">       To_char(Round(BYTES / 1024, 2), &apos;99990.00&apos;) || &apos;G&apos;               AS &quot;&#x5B9E;&#x6709;&quot;,</span><br><span class="line">       To_char(Round(FREE / 1024, 2), &apos;99990.00&apos;)  || &apos;G&apos;               AS &quot;&#x73B0;&#x6709;&quot;,</span><br><span class="line">       To_char(Round(( BYTES - FREE ) / 1024, 2), &apos;99990.00&apos;)    || &apos;G&apos; AS &quot;&#x4F7F;&#x7528;&quot;,</span><br><span class="line">       To_char(Round(10000 * USED / BYTES) / 100, &apos;99990.00&apos;)    || &apos;%&apos; AS &quot;&#x6BD4;&#x4F8B;&quot;</span><br><span class="line">FROM   (SELECT A.TABLESPACE_NAME                             TABLESPACE_NAME,</span><br><span class="line">               Floor(A.BYTES / ( 1024 * 1024 ))              BYTES,</span><br><span class="line">               Floor(B.FREE / ( 1024 * 1024 ))               FREE,</span><br><span class="line">               Floor(( A.BYTES - B.FREE ) / ( 1024 * 1024 )) USED</span><br><span class="line">        FROM   (SELECT TABLESPACE_NAME TABLESPACE_NAME,  Sum(BYTES) AS BYTES</span><br><span class="line">                FROM   DBA_DATA_FILES</span><br><span class="line">                GROUP  BY TABLESPACE_NAME) A,</span><br><span class="line">               (SELECT TABLESPACE_NAME TABLESPACE_NAME,  Sum(BYTES) AS FREE</span><br><span class="line">                FROM   DBA_FREE_SPACE</span><br><span class="line">                GROUP  BY TABLESPACE_NAME) B</span><br><span class="line">        WHERE  A.TABLESPACE_NAME = B.TABLESPACE_NAME)</span><br><span class="line">--WHERE TABLESPACE_NAME LIKE &apos;OPRISK%&apos; --&#x8FD9;&#x4E00;&#x53E5;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x8868;&#x7A7A;&#x95F4;&#x540D;&#x79F0;</span><br><span class="line">ORDER  BY Floor(10000 * USED / BYTES) DESC;</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/09/28/&#x8868;&#x7A7A;&#x95F4;&#x5404;&#x79CD;&#x67E5;&#x8BE2;/2016-09-27_203038.jpg" alt=""></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">select tablespace_name,</span><br><span class="line">       max_gb,</span><br><span class="line">       used_gb,</span><br><span class="line">       round(100 * used_gb / max_gb) pct_used</span><br><span class="line">  from (select a.tablespace_name tablespace_name,</span><br><span class="line">               round((a.bytes_alloc - nvl(b.bytes_free, 0)) / power(2, 30),</span><br><span class="line">                     2) used_gb,</span><br><span class="line">               round(a.maxbytes / power(2, 30), 2) max_gb</span><br><span class="line">          from (select f.tablespace_name,</span><br><span class="line">                       sum(f.bytes) bytes_alloc,</span><br><span class="line">                       sum(decode(f.autoextensible,</span><br><span class="line">                                  &apos;YES&apos;,</span><br><span class="line">                                  f.maxbytes,</span><br><span class="line">                                  &apos;NO&apos;,</span><br><span class="line">                                  f.bytes)) maxbytes</span><br><span class="line">                  from dba_data_files f</span><br><span class="line">                 group by tablespace_name) a,</span><br><span class="line">               (select f.tablespace_name, sum(f.bytes) bytes_free</span><br><span class="line">                  from dba_free_space f</span><br><span class="line">                 group by tablespace_name) b</span><br><span class="line">         where a.tablespace_name = b.tablespace_name(+)</span><br><span class="line">        union all</span><br><span class="line">        select h.tablespace_name tablespace_name,</span><br><span class="line">               round(sum(nvl(p.bytes_used, 0)) / power(2, 30), 2) used_gb,</span><br><span class="line">               round(sum(decode(f.autoextensible,</span><br><span class="line">                                &apos;YES&apos;,</span><br><span class="line">                                f.maxbytes,</span><br><span class="line">                                &apos;NO&apos;,</span><br><span class="line">                                f.bytes)) / power(2, 30),</span><br><span class="line">                     2) max_gb</span><br><span class="line">          from v$temp_space_header h, v$temp_extent_pool p, dba_temp_files f</span><br><span class="line">         where p.file_id(+) = h.file_id</span><br><span class="line">           and p.tablespace_name(+) = h.tablespace_name</span><br><span class="line">           and f.file_id = h.file_id</span><br><span class="line">           and f.tablespace_name = h.tablespace_name</span><br><span class="line">         group by h.tablespace_name)</span><br><span class="line">order by 4;</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/09/28/&#x8868;&#x7A7A;&#x95F4;&#x5404;&#x79CD;&#x67E5;&#x8BE2;/C:/Users\QS\Desktop\2016-09-27_203257.jpg" alt=""></p>
+<p><img src="/2016/09/28/&#x8868;&#x7A7A;&#x95F4;&#x5404;&#x79CD;&#x67E5;&#x8BE2;/C:/Users\QS\Desktop\2016-09-27_203257.jpg" alt="2016-09-27_203257"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag">#oracle</a>
+          
+            <a href="/tags/tablespace/" rel="tag">#tablespace</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/28/oracle数据导入导出/" rel="next" title="oracle数据导入导出">
+                <i class="fa fa-chevron-left"></i> oracle数据导入导出
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/07/windows命令收集/" rel="prev" title="windows命令收集">
+                windows命令收集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/28/表空间各种查询/"
+           data-title="表空间各种查询" data-url="http://zhufanjia.com/2016/09/28/表空间各种查询/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="青山" />
+          <p class="site-author-name" itemprop="name">青山</p>
+          <p class="site-description motion-element" itemprop="description">总有一天，你会成为你想成为的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YiShanQingF" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3692761214" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/e57478eea9ca/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ixirong.com/" title="自由" target="_blank">自由</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.youmeek.com/" title="YouMeek" target="_blank">YouMeek</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询表空间使用情况"><span class="nav-number">1.</span> <span class="nav-text">查询表空间使用情况</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">青山</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhufanjia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Ry875QqUxQfN8PlWYNqAjMDE-gzGzoHsz", "9DXIpuj91uwVev9vuo2JT4Fc");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

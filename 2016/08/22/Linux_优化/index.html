@@ -1,0 +1,1002 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,Centos,ssh,su,sudo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Linux_&amp;#x4F18;&amp;#x5316;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x67E5;&amp;#x770B;1234cat /etc/redhat-releaseuname -runame -muname -a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos 基本优化">
+<meta property="og:url" content="http://zhufanjia.com/2016/08/22/Linux_优化/index.html">
+<meta property="og:site_name" content="青山">
+<meta property="og:description" content="Linux_&amp;#x4F18;&amp;#x5316;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x67E5;&amp;#x770B;1234cat /etc/redhat-releaseuname -runame -muname -a">
+<meta property="og:image" content="http://zhufanjia.com/2016/08/22/Linux_优化/2016-07-03_140329.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/08/22/Linux_优化/2016-07-03_140415.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/08/22/Linux_优化/2016-07-03_140415.jpg">
+<meta property="og:image" content="http://zhufanjia.com/2016/08/22/Linux_优化/2016-07-03_165611.jpg">
+<meta property="og:updated_time" content="2016-09-28T02:34:35.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos 基本优化">
+<meta name="twitter:description" content="Linux_&amp;#x4F18;&amp;#x5316;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x67E5;&amp;#x770B;1234cat /etc/redhat-releaseuname -runame -muname -a">
+<meta name="twitter:image" content="http://zhufanjia.com/2016/08/22/Linux_优化/2016-07-03_140329.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Centos 基本优化 | 青山 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">青山</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">生命不息，折腾不止</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+
+      
+
+    </ul>
+  
+  
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'N9XW5kELRRqGU7EQ9qhU','2.0.0');
+</script>
+
+
+
+    </div>
+  
+  
+  
+  <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+    _st('install','N9XW5kELRRqGU7EQ9qhU','2.0.0');
+  </script>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Centos 基本优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-22T13:10:00+08:00" content="2016-08-22">
+              2016-08-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/Centos/" itemprop="url" rel="index">
+                    <span itemprop="name">Centos</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/22/Linux_优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/Linux_优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/22/Linux_优化/" class="leancloud_visitors" data-flag-title="Centos 基本优化">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux-&#x4F18;&#x5316;"><a href="#Linux-&#x4F18;&#x5316;" class="headerlink" title="Linux_&#x4F18;&#x5316;"></a>Linux_&#x4F18;&#x5316;</h1><h3 id="&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;"><a href="#&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;" class="headerlink" title="&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;"></a>&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x67E5;&#x770B;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line">uname -r</span><br><span class="line">uname -m</span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="&#x78C1;&#x76D8;&#x5206;&#x533A;"><a href="#&#x78C1;&#x76D8;&#x5206;&#x533A;" class="headerlink" title="&#x78C1;&#x76D8;&#x5206;&#x533A;"></a>&#x78C1;&#x76D8;&#x5206;&#x533A;</h3><blockquote>
+<ul>
+<li>&#x4E3B;&#x5206;&#x533A;&#xFF08;&#x4E00;&#x5757;&#x786C;&#x76D8;&#x6700;&#x591A;&#x6709;4&#x4E2A;&#x4E3B;&#x5206;&#x533A;&#xFF09;</li>
+<li>&#x6269;&#x5C55;&#x5206;&#x533A;&#xFF08;&#x6700;&#x591A;&#x4E00;&#x4E2A;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x6269;&#x5C55;&#x5206;&#x533A;&#x4E0A;&#x5212;&#x5206;&#x903B;&#x8F91;&#x5206;&#x533A;&#xFF09;</li>
+<li>&#x903B;&#x8F91;&#x5206;&#x533A;</li>
+</ul>
+</blockquote>
+<p><code>&#x683C;&#x5F0F;&#x5316;</code>&#x4E3B;&#x8981;&#x662F;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</p>
+<h3 id="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;"><a href="#&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;" class="headerlink" title="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;"></a>&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x670D;&#x52A1;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setup</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140329.jpg" alt=""><br><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140415.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntsysv</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_140415.jpg" alt=""></p>
+<p>Linux&#x5FC5;&#x5F00;&#x7684;&#x670D;&#x52A1;</p>
+<blockquote>
+<ul>
+<li>crond        &#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</li>
+<li>network    &#x7F51;&#x7EDC;</li>
+<li>rsyslog    &#x7CFB;&#x7EDF;&#x65E5;&#x5FD7;</li>
+<li>sshd            ssh</li>
+</ul>
+</blockquote>
+<h3 id="&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;"><a href="#&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;" class="headerlink" title="&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;"></a>&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list|grep &quot;3:on&quot;</span><br><span class="line"></span><br><span class="line">abrt-ccpp      	0:off	1:off	2:off	3:on	4:off	5:on	6:off</span><br><span class="line">abrtd          	0:off	1:off	2:off	3:on	4:off	5:on	6:off</span><br><span class="line">acpid          	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">atd            	0:off	1:off	2:off	3:on	4:on	5:on	6:off</span><br><span class="line">auditd         	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">blk-availability	0:off	1:on	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">cpuspeed       	0:off	1:on	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">crond          	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">haldaemon      	0:off	1:off	2:off	3:on	4:on	5:on	6:off</span><br><span class="line">ip6tables      	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">iptables       	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">irqbalance     	0:off	1:off	2:off	3:on	4:on	5:on	6:off</span><br><span class="line">kdump          	0:off	1:off	2:off	3:on	4:on	5:on	6:off</span><br><span class="line">lvm2-monitor   	0:off	1:on	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">mcelogd        	0:off	1:off	2:off	3:on	4:off	5:on	6:off</span><br><span class="line">mdmonitor      	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">messagebus     	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">netfs          	0:off	1:off	2:off	3:on	4:on	5:on	6:off</span><br><span class="line">network        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">postfix        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">rsyslog        	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">sshd           	0:off	1:off	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">sysstat        	0:off	1:on	2:on	3:on	4:on	5:on	6:off</span><br><span class="line">udev-post      	0:off	1:on	2:on	3:on	4:on	5:on	6:off</span><br></pre></td></tr></table></figure>
+<p><code>udev-post</code>&#x670D;&#x52A1;&#x540D;&#x79F0;</p>
+<h3 id="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;"><a href="#&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;" class="headerlink" title="&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;"></a>&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x7684;&#x670D;&#x52A1;</h3><blockquote>
+<p>chkconfig udev-post off</p>
+</blockquote>
+<h3 id="&#x67E5;&#x770B;&#x67D0;&#x4E2A;&#x670D;&#x52A1;"><a href="#&#x67E5;&#x770B;&#x67D0;&#x4E2A;&#x670D;&#x52A1;" class="headerlink" title="&#x67E5;&#x770B;&#x67D0;&#x4E2A;&#x670D;&#x52A1;"></a>&#x67E5;&#x770B;&#x67D0;&#x4E2A;&#x670D;&#x52A1;</h3><blockquote>
+<p>chkconfig &#x2013;list udev-post</p>
+</blockquote>
+<h3 id="&#x5173;&#x95ED;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x9879;"><a href="#&#x5173;&#x95ED;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x9879;" class="headerlink" title="&#x5173;&#x95ED;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x9879;"></a>&#x5173;&#x95ED;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x673A;&#x542F;&#x52A8;&#x9879;</h3><h4 id="&#x67E5;&#x770B;&#x54EA;&#x4E9B;&#x670D;&#x52A1;&#x5F00;&#x673A;&#x81EA;&#x542F;"><a href="#&#x67E5;&#x770B;&#x54EA;&#x4E9B;&#x670D;&#x52A1;&#x5F00;&#x673A;&#x81EA;&#x542F;" class="headerlink" title="&#x67E5;&#x770B;&#x54EA;&#x4E9B;&#x670D;&#x52A1;&#x5F00;&#x673A;&#x81EA;&#x542F;"></a>&#x67E5;&#x770B;&#x54EA;&#x4E9B;&#x670D;&#x52A1;&#x5F00;&#x673A;&#x81EA;&#x542F;</h4><blockquote>
+<p> chkconfig &#x2013;list|grep &#x201C;3:on&#x201D;|awk &#x2018;{print $1}&#x2019;</p>
+</blockquote>
+<h4 id="&#x5173;&#x95ED;3&#x542F;&#x52A8;&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;"><a href="#&#x5173;&#x95ED;3&#x542F;&#x52A8;&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;" class="headerlink" title="&#x5173;&#x95ED;3&#x542F;&#x52A8;&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;"></a>&#x5173;&#x95ED;3&#x542F;&#x52A8;&#x7EA7;&#x522B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x670D;&#x52A1;</h4><blockquote>
+<p>for qshan in `chkconfig &#x2013;list|grep &#x201C;3:on&#x201D;|awk &#x2018;{print $1}&#x2019;`;do chkconfig $qshan off;done</p>
+</blockquote>
+<h4 id="&#x6253;&#x5F00;&#x9700;&#x8981;&#x7684;&#x81EA;&#x542F;&#x670D;&#x52A1;"><a href="#&#x6253;&#x5F00;&#x9700;&#x8981;&#x7684;&#x81EA;&#x542F;&#x670D;&#x52A1;" class="headerlink" title="&#x6253;&#x5F00;&#x9700;&#x8981;&#x7684;&#x81EA;&#x542F;&#x670D;&#x52A1;"></a>&#x6253;&#x5F00;&#x9700;&#x8981;&#x7684;&#x81EA;&#x542F;&#x670D;&#x52A1;</h4><blockquote>
+<p>for qshan in crond network rsyslog sshd  ;do chkconfig $qshan on;done</p>
+</blockquote>
+<h4 id="&#x8FC7;&#x6EE4;&#x5FC5;&#x987B;&#x542F;&#x52A8;&#x9879;"><a href="#&#x8FC7;&#x6EE4;&#x5FC5;&#x987B;&#x542F;&#x52A8;&#x9879;" class="headerlink" title="&#x8FC7;&#x6EE4;&#x5FC5;&#x987B;&#x542F;&#x52A8;&#x9879;"></a>&#x8FC7;&#x6EE4;&#x5FC5;&#x987B;&#x542F;&#x52A8;&#x9879;</h4><blockquote>
+<p>chkconfig &#x2013;list|grep &#x201C;3:on&#x201D;|awk &#x2018;{print $1}&#x2019;|grep -vE &#x201C;crond|rsyslog|sshd|network&#x201D;</p>
+<p>for qshan in `chkconfig &#x2013;list|grep &#x201C;3:on&#x201D;|awk &#x2018;{print $1}&#x2019;|grep -vE &#x201C;crond|rsyslog|sshd|network&#x201D;`; do chkconfig $qshan off;done</p>
+</blockquote>
+<h3 id="ssh-&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4FEE;&#x6539;"><a href="#ssh-&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4FEE;&#x6539;" class="headerlink" title="ssh &#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4FEE;&#x6539;"></a>ssh &#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4FEE;&#x6539;</h3><h4 id="ssh-&#x7AEF;&#x53E3;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;-etc-ssh-sshd-config"><a href="#ssh-&#x7AEF;&#x53E3;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;-etc-ssh-sshd-config" class="headerlink" title="ssh &#x7AEF;&#x53E3;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x6587;&#x4EF6; /etc/ssh/sshd_config"></a>ssh &#x7AEF;&#x53E3;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x6587;&#x4EF6; /etc/ssh/sshd_config</h4><blockquote>
+<p>vi /etc/ssh/sshd_config</p>
+</blockquote>
+<h4 id="&#x4FEE;&#x6539;ssh&#x7AEF;&#x53E3;"><a href="#&#x4FEE;&#x6539;ssh&#x7AEF;&#x53E3;" class="headerlink" title="&#x4FEE;&#x6539;ssh&#x7AEF;&#x53E3;"></a>&#x4FEE;&#x6539;ssh&#x7AEF;&#x53E3;</h4><h5 id="&#x5728;13&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"><a href="#&#x5728;13&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x5728;13&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"></a>&#x5728;13&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Prot 52113</span><br><span class="line">#Port 22</span><br></pre></td></tr></table></figure>
+<p><code>&#x7CFB;&#x7EDF;&#x603B;&#x7AEF;&#x53E3;&#x6570;65535</code></p>
+<h4 id="&#x7981;&#x6B62;root&#x7528;&#x6237;&#x8FDC;&#x7A0B;ssh&#x767B;&#x5F55;"><a href="#&#x7981;&#x6B62;root&#x7528;&#x6237;&#x8FDC;&#x7A0B;ssh&#x767B;&#x5F55;" class="headerlink" title="&#x7981;&#x6B62;root&#x7528;&#x6237;&#x8FDC;&#x7A0B;ssh&#x767B;&#x5F55;"></a>&#x7981;&#x6B62;root&#x7528;&#x6237;&#x8FDC;&#x7A0B;ssh&#x767B;&#x5F55;</h4><h5 id="&#x5728;43&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"><a href="#&#x5728;43&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x5728;43&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"></a>&#x5728;43&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin no</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5728;&#x4FEE;&#x6539;&#x6B64;&#x529F;&#x80FD;&#x65F6;&#x8BF7;&#x5148;&#x521B;&#x5EFA;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;<code>su - root</code>&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x5230;root&#x7528;&#x6237;</p>
+</blockquote>
+<h4 id="&#x4F18;&#x5316;ssh&#x767B;&#x5F55;&#x6162;"><a href="#&#x4F18;&#x5316;ssh&#x767B;&#x5F55;&#x6162;" class="headerlink" title="&#x4F18;&#x5316;ssh&#x767B;&#x5F55;&#x6162;"></a>&#x4F18;&#x5316;ssh&#x767B;&#x5F55;&#x6162;</h4><h5 id="&#x5728;122&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"><a href="#&#x5728;122&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x5728;122&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"></a>&#x5728;122&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UseDNS no</span><br></pre></td></tr></table></figure>
+<h5 id="&#x5728;81&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"><a href="#&#x5728;81&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x5728;81&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"></a>&#x5728;81&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GSSAPIAuthentication no</span><br></pre></td></tr></table></figure>
+<h4 id="&#x91CD;&#x542F;sshd&#x670D;&#x52A1;"><a href="#&#x91CD;&#x542F;sshd&#x670D;&#x52A1;" class="headerlink" title="&#x91CD;&#x542F;sshd&#x670D;&#x52A1;"></a>&#x91CD;&#x542F;sshd&#x670D;&#x52A1;</h4><blockquote>
+<p>/etc/init.d/sshd restart</p>
+</blockquote>
+<h3 id="&#x4E34;&#x65F6;&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;"><a href="#&#x4E34;&#x65F6;&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;" class="headerlink" title="&#x4E34;&#x65F6;&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;"></a>&#x4E34;&#x65F6;&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;</h3><blockquote>
+<p>/etc/init.d/iptables stop</p>
+</blockquote>
+<h3 id="&#x7ED9;&#x666E;&#x901A;&#x7528;&#x6237;root&#x547D;&#x4EE4;&#x7684;&#x6743;&#x9650;"><a href="#&#x7ED9;&#x666E;&#x901A;&#x7528;&#x6237;root&#x547D;&#x4EE4;&#x7684;&#x6743;&#x9650;" class="headerlink" title="&#x7ED9;&#x666E;&#x901A;&#x7528;&#x6237;root&#x547D;&#x4EE4;&#x7684;&#x6743;&#x9650;"></a>&#x7ED9;&#x666E;&#x901A;&#x7528;&#x6237;root&#x547D;&#x4EE4;&#x7684;&#x6743;&#x9650;</h3><h4 id="visudo-&#x4E0E;-vi-etc-sudoers-&#x6548;&#x679C;&#x4E00;&#x6837;"><a href="#visudo-&#x4E0E;-vi-etc-sudoers-&#x6548;&#x679C;&#x4E00;&#x6837;" class="headerlink" title="visudo &#x4E0E; vi /etc/sudoers &#x6548;&#x679C;&#x4E00;&#x6837;"></a>visudo &#x4E0E; vi /etc/sudoers &#x6548;&#x679C;&#x4E00;&#x6837;</h4><h5 id="&#x5728;30&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"><a href="#&#x5728;30&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x5728;30&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;"></a>&#x5728;30&#x884C;&#x5DE6;&#x53F3;&#x8BBE;&#x7F6E;</h5><p><strong>&#x7ED9;san&#x7528;&#x6237;root&#x6743;&#x9650;</strong></p>
+<blockquote>
+<p>san     ALL=(ALL)       NOPASSWD: ALL</p>
+</blockquote>
+<p><strong>&#x7ED9;hadoop&#x7528;&#x6237;&#x6267;&#x884C;useradd&#x548C;passwd&#x547D;&#x4EE4;&#x7684;&#x6743;&#x9650;</strong></p>
+<blockquote>
+<p>hadoop  ALL=(ALL)             /etc/sbin/useradd,/usr/bin/passwd</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/zolalad/article/details/11369423" title="CentOS6.3 &#x7CFB;&#x7EDF;&#x4E2D;su&#xFF0C;su -&#xFF0C;sudo&#x4E09;&#x547D;&#x4EE4;&#x8BB2;&#x89E3;" target="_blank" rel="external">CentOS6.3 &#x7CFB;&#x7EDF;&#x4E2D;su&#xFF0C;su -&#xFF0C;sudo&#x4E09;&#x547D;&#x4EE4;&#x8BB2;&#x89E3;</a></p>
+<h3 id="&#x7528;&#x6237;PATH"><a href="#&#x7528;&#x6237;PATH" class="headerlink" title="&#x7528;&#x6237;PATH"></a>&#x7528;&#x6237;PATH</h3><p><img src="/2016/08/22/Linux_&#x4F18;&#x5316;/2016-07-03_165611.jpg" alt=""></p>
+<p>&#x5168;&#x5C40;&#x751F;&#x6548;&#x3001;/etc/profile<br>&#x666E;&#x901A;&#x7528;&#x6237;&#x751F;&#x6548; ~/.bash_profile&#x6216;&#x8005;~/.bashrc</p>
+<h3 id="&#x5B57;&#x7B26;&#x96C6;&#x4FEE;&#x6539;"><a href="#&#x5B57;&#x7B26;&#x96C6;&#x4FEE;&#x6539;" class="headerlink" title="&#x5B57;&#x7B26;&#x96C6;&#x4FEE;&#x6539;"></a>&#x5B57;&#x7B26;&#x96C6;&#x4FEE;&#x6539;</h3><blockquote>
+<p>vi /etc/sysconfig/i18n</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#LANG=&quot;en_US.UTF-8&quot;</span><br><span class="line">LANG=&quot;zh_CN.GB18030&quot;</span><br><span class="line">SYSFONT=&quot;latarcyrheb-sun16&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>source /etc/sysconfig/i18n<br>echo $LANG</p>
+</blockquote>
+<h3 id="&#x65F6;&#x95F4;&#x540C;&#x6B65;"><a href="#&#x65F6;&#x95F4;&#x540C;&#x6B65;" class="headerlink" title="&#x65F6;&#x95F4;&#x540C;&#x6B65;"></a>&#x65F6;&#x95F4;&#x540C;&#x6B65;</h3><h4 id="ntp&#x65F6;&#x95F4;&#x540C;&#x6B65;"><a href="#ntp&#x65F6;&#x95F4;&#x540C;&#x6B65;" class="headerlink" title="ntp&#x65F6;&#x95F4;&#x540C;&#x6B65;"></a>ntp&#x65F6;&#x95F4;&#x540C;&#x6B65;</h4><h3 id="&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;"><a href="#&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;" class="headerlink" title="&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;"></a>&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;</h3><blockquote>
+<p>echo &#x2018;* - nofile 65535&#x2019; &gt;&gt; /etc/security/limits.conf</p>
+</blockquote>
+<h3 id="&#x8C03;&#x6574;&#x5185;&#x6838;&#x53C2;&#x6570;"><a href="#&#x8C03;&#x6574;&#x5185;&#x6838;&#x53C2;&#x6570;" class="headerlink" title="&#x8C03;&#x6574;&#x5185;&#x6838;&#x53C2;&#x6570;"></a>&#x8C03;&#x6574;&#x5185;&#x6838;&#x53C2;&#x6570;</h3><blockquote>
+<p>vi etc</p>
+</blockquote>
+<p><a href="http://oldboy.blog.51cto.com/2561410/1336488" title="linux&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x82E5;&#x5E72;&#x4F18;&#x5316;&#x5B9E;&#x6218;" target="_blank" rel="external">CentOS&#xFF08;5.8/6.4&#xFF09;linux&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x82E5;&#x5E72;&#x4F18;&#x5316;&#x5B9E;&#x6218;</a></p>
+<p><a href="http://yangrong.blog.51cto.com/6945369/1321594" title="linux&#x5185;&#x6838;&#x53C2;&#x6570;&#x6CE8;&#x91CA;&#x4E0E;&#x4F18;&#x5316;" target="_blank" rel="external">linux&#x5185;&#x6838;&#x53C2;&#x6570;&#x6CE8;&#x91CA;&#x4E0E;&#x4F18;&#x5316;</a></p>
+<h3 id="&#x5B9A;&#x65F6;&#x6E05;&#x7406;-clientmqueue-&#x76EE;&#x5F55;&#x5783;&#x573E;&#x6587;&#x4EF6;&#x9632;&#x6B62;&#x5360;&#x6EE1;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;"><a href="#&#x5B9A;&#x65F6;&#x6E05;&#x7406;-clientmqueue-&#x76EE;&#x5F55;&#x5783;&#x573E;&#x6587;&#x4EF6;&#x9632;&#x6B62;&#x5360;&#x6EE1;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;" class="headerlink" title="&#x5B9A;&#x65F6;&#x6E05;&#x7406; clientmqueue &#x76EE;&#x5F55;&#x5783;&#x573E;&#x6587;&#x4EF6;&#x9632;&#x6B62;&#x5360;&#x6EE1;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;"></a>&#x5B9A;&#x65F6;&#x6E05;&#x7406; clientmqueue &#x76EE;&#x5F55;&#x5783;&#x573E;&#x6587;&#x4EF6;&#x9632;&#x6B62;&#x5360;&#x6EE1;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;</h3><p>/var/spool/clientmqueue/sendmail &#x90AE;&#x4EF6;&#x670D;&#x52A1;&#x90AE;&#x4EF6;&#x4E34;&#x65F6;&#x5B58;&#x653E;&#x5730;&#x70B9;</p>
+<h3 id="&#x767B;&#x5F55;&#x63D0;&#x793A;"><a href="#&#x767B;&#x5F55;&#x63D0;&#x793A;" class="headerlink" title="&#x767B;&#x5F55;&#x63D0;&#x793A;"></a>&#x767B;&#x5F55;&#x63D0;&#x793A;</h3><blockquote>
+<p>vi /etc/issue</p>
+</blockquote>
+<h3 id="&#x767B;&#x5F55;&#x63D0;&#x793A;-1"><a href="#&#x767B;&#x5F55;&#x63D0;&#x793A;-1" class="headerlink" title="&#x767B;&#x5F55;&#x63D0;&#x793A;"></a>&#x767B;&#x5F55;&#x63D0;&#x793A;</h3><blockquote>
+<p>vi /etc/motd</p>
+</blockquote>
+<h3 id="&#x9501;&#x5B9A;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;"><a href="#&#x9501;&#x5B9A;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;" class="headerlink" title="&#x9501;&#x5B9A;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;"></a>&#x9501;&#x5B9A;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;</h3><blockquote>
+<p>chattr +i /etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/inittab</p>
+</blockquote>
+<h3 id="&#x89E3;&#x9501;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;"><a href="#&#x89E3;&#x9501;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;" class="headerlink" title="&#x89E3;&#x9501;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;"></a>&#x89E3;&#x9501;&#x7CFB;&#x7EDF;&#x5173;&#x952E;&#x6587;&#x4EF6;</h3><blockquote>
+<p>chattr -i /etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/inittab</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/Centos/" rel="tag">#Centos</a>
+          
+            <a href="/tags/ssh/" rel="tag">#ssh</a>
+          
+            <a href="/tags/su/" rel="tag">#su</a>
+          
+            <a href="/tags/sudo/" rel="tag">#sudo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/16/Linux_安装/" rel="next" title="Centos6 安装教程">
+                <i class="fa fa-chevron-left"></i> Centos6 安装教程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/28/orcale 用户、权限、表空间/" rel="prev" title="orcale 用户、权限、表空间">
+                orcale 用户、权限、表空间 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/22/Linux_优化/"
+           data-title="Centos 基本优化" data-url="http://zhufanjia.com/2016/08/22/Linux_优化/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="青山" />
+          <p class="site-author-name" itemprop="name">青山</p>
+          <p class="site-description motion-element" itemprop="description">总有一天，你会成为你想成为的人</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YiShanQingF" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3692761214" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/e57478eea9ca/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ixirong.com/" title="自由" target="_blank">自由</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.youmeek.com/" title="YouMeek" target="_blank">YouMeek</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-优化"><span class="nav-number">1.</span> <span class="nav-text">Linux_优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统版本查看"><span class="nav-number">1.0.1.</span> <span class="nav-text">系统版本查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘分区"><span class="nav-number">1.0.2.</span> <span class="nav-text">磁盘分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭系统不必要的服务"><span class="nav-number">1.0.3.</span> <span class="nav-text">关闭系统不必要的服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看系统开机启动的服务"><span class="nav-number">1.0.4.</span> <span class="nav-text">查看系统开机启动的服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭系统开机启动的服务"><span class="nav-number">1.0.5.</span> <span class="nav-text">关闭系统开机启动的服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看某个服务"><span class="nav-number">1.0.6.</span> <span class="nav-text">查看某个服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭不必要的开机启动项"><span class="nav-number">1.0.7.</span> <span class="nav-text">关闭不必要的开机启动项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看哪些服务开机自启"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">查看哪些服务开机自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭3启动级别下的所有服务"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">关闭3启动级别下的所有服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开需要的自启服务"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">打开需要的自启服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤必须启动项"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">过滤必须启动项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-服务端口修改"><span class="nav-number">1.0.8.</span> <span class="nav-text">ssh 服务端口修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh-端口服务配置文件-etc-ssh-sshd-config"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">ssh 端口服务配置文件 /etc/ssh/sshd_config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改ssh端口"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">修改ssh端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在13行左右设置"><span class="nav-number">1.0.8.2.1.</span> <span class="nav-text">在13行左右设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁止root用户远程ssh登录"><span class="nav-number">1.0.8.3.</span> <span class="nav-text">禁止root用户远程ssh登录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在43行左右设置"><span class="nav-number">1.0.8.3.1.</span> <span class="nav-text">在43行左右设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化ssh登录慢"><span class="nav-number">1.0.8.4.</span> <span class="nav-text">优化ssh登录慢</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在122行左右设置"><span class="nav-number">1.0.8.4.1.</span> <span class="nav-text">在122行左右设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在81行左右设置"><span class="nav-number">1.0.8.4.2.</span> <span class="nav-text">在81行左右设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重启sshd服务"><span class="nav-number">1.0.8.5.</span> <span class="nav-text">重启sshd服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#临时关闭防火墙"><span class="nav-number">1.0.9.</span> <span class="nav-text">临时关闭防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给普通用户root命令的权限"><span class="nav-number">1.0.10.</span> <span class="nav-text">给普通用户root命令的权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#visudo-与-vi-etc-sudoers-效果一样"><span class="nav-number">1.0.10.1.</span> <span class="nav-text">visudo 与 vi /etc/sudoers 效果一样</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在30行左右设置"><span class="nav-number">1.0.10.1.1.</span> <span class="nav-text">在30行左右设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户PATH"><span class="nav-number">1.0.11.</span> <span class="nav-text">用户PATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集修改"><span class="nav-number">1.0.12.</span> <span class="nav-text">字符集修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间同步"><span class="nav-number">1.0.13.</span> <span class="nav-text">时间同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ntp时间同步"><span class="nav-number">1.0.13.1.</span> <span class="nav-text">ntp时间同步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符"><span class="nav-number">1.0.14.</span> <span class="nav-text">文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调整内核参数"><span class="nav-number">1.0.15.</span> <span class="nav-text">调整内核参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时清理-clientmqueue-目录垃圾文件防止占满磁盘空间"><span class="nav-number">1.0.16.</span> <span class="nav-text">定时清理 clientmqueue 目录垃圾文件防止占满磁盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录提示"><span class="nav-number">1.0.17.</span> <span class="nav-text">登录提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录提示-1"><span class="nav-number">1.0.18.</span> <span class="nav-text">登录提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁定系统关键文件"><span class="nav-number">1.0.19.</span> <span class="nav-text">锁定系统关键文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解锁系统关键文件"><span class="nav-number">1.0.20.</span> <span class="nav-text">解锁系统关键文件</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">青山</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhufanjia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Ry875QqUxQfN8PlWYNqAjMDE-gzGzoHsz", "9DXIpuj91uwVev9vuo2JT4Fc");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
